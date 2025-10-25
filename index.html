@@ -78,6 +78,36 @@
             background-color: #8B1E1E; /* Darker red */
             transform: scale(1.05);
         }
+        /* Existing styles remain, add this below .rsvp-button */
+        .download-link {
+            font-family: 'Cormorant Garamond', serif;
+            color: #A52A2A; /* Matches RSVP button color */
+            text-decoration: none; /* Remove default underline */
+            font-size: 1.1em;
+            padding: 2px 5px; /* Slight padding for touch targets */
+            border-bottom: 1px solid transparent; /* Subtle underline on hover */
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .download-link:hover {
+            color: #8B1E1E; /* Darker red on hover */
+            border-bottom: 1px solid #A52A2A; /* Elegant underline */
+        }
+
+        /* Media Queries to adjust for mobile */
+        @media (max-width: 768px) {
+            .download-link {
+                font-size: 1em;
+                padding: 2px 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .download-link {
+                font-size: 0.9em;
+                padding: 1px 3px;
+            }
+        }
         /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
             body {
@@ -131,7 +161,7 @@
     
     <a href="https://www.zola.com/wedding/muditandpuja/rsvp" class="rsvp-button">RSVP on Zola</a>
     
-    <p>If images don't load, <a href="invitation.pdf" download>download the full PDF here</a>.</p>
+    <p>If images don't load, <a href="invitation.pdf" download class="download-link">download the full PDF here</a>.</p>
     
     <script>
         // Animation on scroll
