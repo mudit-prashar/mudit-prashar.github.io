@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding Invitation</title>
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"> <!-- Optional for iOS -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"> <!-- Optional for high-res -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"> <!-- Optional for low-res -->
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap">
+    <style>
+        body {
+            font-family: 'Playfair', serif;
+            background-color: #F5E9D7; /* Warm beige background */
+            color: #2F2F2F;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2F2F2F;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        p {
+            font-family: 'Playfair', serif;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        .card-container {
+            width: 90%;
+            max-width: 600px; /* Narrower for elegance */
+            margin: 0 auto 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between cards */
+        }
+        .card {
+            background: #F5E9D7;
+            overflow: hidden;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(20px); /* Start slightly below */
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            box-shadow: 0 4px 12px #F5E9D7;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            max-height: 80vh; /* Limit height for portrait images */
+        }
+        .card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .rsvp-button {
+            display: inline-block;
+            background-color: #A52A2A; /* Red button */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-family: 'Playfair', serif;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            touch-action: manipulation;
+        }
+        .rsvp-button:hover {
+            background-color: #8B1E1E; /* Darker red */
+            transform: scale(1.05);
+        }
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .card {
+                max-height: 70vh;
+            }
+            .card img {
+                max-height: 70vh;
+            }
+            .rsvp-button {
+                padding: 18px 40px;
+                font-size: 1.3em;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .card {
+                border-width: 6px;
+                max-height: 60vh;
+            }
+            .card img {
+                max-height: 60vh;
+            }
+            .rsvp-button {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our Wedding Invitation</h1>
+    <p>Scroll through the pages below—we can't wait to celebrate with you!</p>
+    
+    <div class="card-container">
+        <div class="card"><img src="page1.jpg" alt="Invitation Page 1"></div>
+        <div class="card"><img src="page2.jpg" alt="Invitation Page 2"></div>
+        <div class="card"><img src="page3.jpg" alt="Invitation Page 3"></div>
+        <div class="card"><img src="page4.png" alt="Invitation Page 4"></div>
+    </div>
+    
+    <a href="https://www.zola.com/wedding/muditandpuja/rsvp" class="rsvp-button">RSVP on Zola</a>
+    
+    <p>If images don't load, <a href="invitation.pdf" download>download the full PDF here</a>.</p>
+    
+    <script>
+        // Animation on scroll
+        function checkCards() {
+            const cards = document.querySelectorAll('.card');
+            const triggerBottom = window.innerHeight * 0.8; // Trigger 80% from top
+
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < triggerBottom) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+        }
+
+        // Run on scroll and load
+        window.addEventListener('scroll', checkCards);
+        window.addEventListener('load', checkCards);
+    </script>
+</body>
+</html>
